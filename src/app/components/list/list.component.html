@@ -21,31 +21,33 @@
       </div>
     </div>
     <div class="col-md-10 text-center">
-      <h4 class="text-left">Lista de Articulos</h4>
+      <h4 class="text-left">Lista de clientes</h4>
 
     <div class="spinner-border m-5" role="status"
-        *ngIf="!endowments">
-        <span class="sr-only">Loading...</span>
+        *ngIf="!customers">
+        <span class="sr-only"></span>
     </div>
 
-      <table class="table" *ngIf="endowments">
+      <table class="table" *ngIf="customers">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Serial</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Tipo Identificación</th>
+            <th scope="col">Número Identificación</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Sistema Operativo</th>
+            <th scope="col">Género</th>
           </tr>
         </thead>
         <tbody>
           <tr 
-            *ngFor="let endowment of endowments; let i = index">
+            *ngFor="let customer of customers; let i = index">
             <th scope="row">{{ i+1 }}</th>
-            <td>{{ endowment.serial }}</td>
-            <td>{{ endowment.name }}</td>
-            <td>{{ endowment.type }}</td>
-            <td>{{ endowment.systemOperative }}</td>
+            <td>{{ customer.imageURL }}</td>
+            <td>{{ customer.identificationName }}</td>
+            <td>{{ customer.identificationNumber }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.gender }}</td>
           </tr>
           
         </tbody>

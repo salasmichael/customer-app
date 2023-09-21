@@ -10,7 +10,7 @@ export class CustomersService {
 
   constructor(private http: HttpClient) { }
 
-  getAllEndowments() {
+  getAllCustomers() {
     return this.http.get<any>(`${this.baseUrl}/customers`);
   }
 

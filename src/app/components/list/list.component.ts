@@ -8,7 +8,7 @@ import { CustomersService } from 'src/app/services/customers.service';
 })
 export class ListComponent {
 
-  endowments?: any[];
+  customers?: any[];
   tempEndowments?: any[];
   serial = '';
 
@@ -16,31 +16,31 @@ export class ListComponent {
   constructor( private customersService:CustomersService) { }
   
   ngOnInit(): void {
-    this.retrieve()
+    this.getAllCustomers()
   }
 
-  retrieve(): void {
-    this.customersService.getAllEndowments()
+  getAllCustomers(): void {
+    this.customersService.getAllCustomers()
       .subscribe({
         next: (data:any) => {
-          this.endowments = data.data;
-          this.tempEndowments = this.endowments; 
+          this.customers = data.data;
+          this.tempEndowments = this.customers; 
         },
         error: (e) => console.error(e)
       });
   }
 
   refreshList(): void {
-    this.retrieve();
+    this.getAllCustomers();
   }
 
   search(ev:any){
-    ev.target.value == '' && (this.endowments = this.tempEndowments)
+    ev.target.value == '' && (this.customers = this.tempEndowments)
   }
 
   searchTitle(): void {
-    let found = this.endowments?.filter(f=> f.serial == this.serial);
-    this.endowments =  found?.length !=  0 ? found : this.tempEndowments;
+    let found = this.customers?.filter(f=> f.serial == this.serial);
+    this.customers =  found?.length !=  0 ? found : this.tempEndowments;
   }
 
 
