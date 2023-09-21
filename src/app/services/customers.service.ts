@@ -16,12 +16,16 @@ export class CustomersService {
     return this.http.get<Customer[]>(`${this.baseUrl}/customers`);
   }
 
+  getCustomer(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/customers/${id}`);
+  }
+
   createCustomer(customer: any): Observable<Customer> {
     return this.http.post(`${this.baseUrl}/create`, customer);
   }
 
   updateCustomer(id: number, customer: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/customers/${id}`, customer);
+    return this.http.put(`${this.baseUrl}/update/${id}`, customer);
   }
 
   deleteCustomer(id: number): Observable<any> {

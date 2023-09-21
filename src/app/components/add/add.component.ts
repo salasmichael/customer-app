@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class AddComponent {
 
   formSubmitted:boolean = false;
+  types?: any[];
 
   public registerForm = this.fb.group({
       identificationTypeID:[ '',  Validators.required  ],
@@ -24,8 +25,7 @@ export class AddComponent {
                 private identificationTypeService: IdentificationTypeService,
                 private customersService:CustomersService ) { }
 
-  types?: any[];
-
+  
   ngOnInit(): void {
     this.getIdentificationsType()
   }
@@ -43,9 +43,6 @@ export class AddComponent {
     if( this.registerForm.invalid ){
      return;
     }
-
-    console.log(this.registerForm.value);
-    
 
     this.customersService.createCustomer( this.registerForm.value )
         .subscribe( ({
@@ -67,7 +64,14 @@ export class AddComponent {
               })
             }
           },
-          error: (e) => console.log(e)
+          error: (e) => {
+            Swal.fire({
+              icon: 'warning',
+              title: "Crear cliente",
+              text: e.error.message,
+              showConfirmButton: true,
+            })
+          }
         }));
     
   }

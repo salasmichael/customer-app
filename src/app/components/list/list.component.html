@@ -51,7 +51,7 @@
             <td>{{ customer?.gender }}</td>
             <td>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button">Editar</button>
+                <button class="btn btn-primary me-md-2" type="button" (click)="getCustomer(customer?.customerID)" >Editar</button>
                 <button class="btn btn-danger" (click)="delete(customer?.customerID,customer?.name)" type="button">Eliminar</button>
               </div>
             </td>

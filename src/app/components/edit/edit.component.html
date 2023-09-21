@@ -2,11 +2,11 @@
     <div class="col-md-4 mx-auto">
       <form class="form-horizontal form-material" 
                     autocomplete="off"
-                    [formGroup]="registerForm" 
-                    (ngSubmit)="create()">
+                    [formGroup]="editForm" 
+                    (submit)="update()">
 
             <div class="form-group">
-                <label for="serial">Tipo de identificación</label>
+                <label for="identificationTypeID">Tipo de identificación</label>
                 <select class="form-control"
                         name="identificationTypeID"
                         formControlName="identificationTypeID">
@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-group">
-                <label for="name">Número de identificación</label>
+                <label for="identificationNumber">Número de identificación</label>
                 <input type="text" class="form-control"
                   name="identificationNumber"
                   formControlName="identificationNumber"
@@ -35,7 +35,7 @@
             </div>
       
             <div class="form-group">
-              <label for="description">Género</label>
+              <label for="gender">Género</label>
               <select class="form-control"
                         name="gender"
                         formControlName="gender">
@@ -48,7 +48,7 @@
 
             <div class="row mt-4">
               <div class="col-md-4 mx-auto">
-                <button  class="btn btn-success">Guardar cliente</button>
+                <button  class="btn btn-success">Editar cliente</button>
               </div>
             </div>
            

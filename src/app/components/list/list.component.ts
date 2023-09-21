@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CustomersService } from 'src/app/services/customers.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +15,8 @@ export class ListComponent {
   serial = '';
 
 
-  constructor( private customersService:CustomersService) { }
+  constructor( private customersService:CustomersService,
+              private router:Router) { }
   
   ngOnInit(): void {
     this.getAllCustomers();
@@ -29,6 +31,10 @@ export class ListComponent {
         },
         error: (e) => console.error(e)
       });
+  }
+
+  getCustomer(id:number){
+    this.router.navigateByUrl(`/customer/${id}`);     
   }
   
 
