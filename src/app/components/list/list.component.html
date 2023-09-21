@@ -1,0 +1,55 @@
+
+<div class="list row" >
+    <div class="col-md-10">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Buscar por serial"
+          [(ngModel)]="serial"
+          (keyup)="search($event)"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10 text-center">
+      <h4 class="text-left">Lista de Articulos</h4>
+
+    <div class="spinner-border m-5" role="status"
+        *ngIf="!endowments">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+      <table class="table" *ngIf="endowments">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Serial</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Sistema Operativo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr 
+            *ngFor="let endowment of endowments; let i = index">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ endowment.serial }}</td>
+            <td>{{ endowment.name }}</td>
+            <td>{{ endowment.type }}</td>
+            <td>{{ endowment.systemOperative }}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+    </div>
+  </div>
