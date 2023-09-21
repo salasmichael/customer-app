@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CustomersService } from 'src/app/services/customers.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +17,7 @@ export class ListComponent {
   constructor( private customersService:CustomersService) { }
   
   ngOnInit(): void {
-    this.getAllCustomers()
+    this.getAllCustomers();
   }
 
   getAllCustomers(): void {
@@ -30,6 +31,38 @@ export class ListComponent {
       });
   }
   
+
+  delete(id:number,name:string){
+    Swal.fire({
+      title: 'Eliminar cliente',
+      text: `¿Deseas eliminar al cliente ${name} ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.customersService.deleteCustomer(id)
+          .subscribe({
+            next: (res) => {
+              if(res.status){
+                Swal.fire(
+                  'Eliminado!',
+                   res.data
+                )
+                this.getAllCustomers()
+              }
+            },
+            error: (e) => console.log(e)
+          });
+      }
+    })
+  }
+
+
+
 
   refreshList(): void {
     this.getAllCustomers();

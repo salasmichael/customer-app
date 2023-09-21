@@ -45,14 +45,14 @@
             *ngFor="let customer of customers; let i = index">
             <th scope="row">{{ i+1 }}</th>
             <!-- <td>{{ customer.imageURL }}</td> -->
-            <td>{{ customer.identificationName }}</td>
-            <td>{{ customer.identificationNumber }}</td>
-            <td>{{ customer.name }}</td>
-            <td>{{ customer.gender }}</td>
+            <td>{{ customer?.identificationName }}</td>
+            <td>{{ customer?.identificationNumber }}</td>
+            <td>{{ customer?.name }}</td>
+            <td>{{ customer?.gender }}</td>
             <td>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary me-md-2" type="button">Editar</button>
-                <button class="btn btn-danger" type="button">Eliminar</button>
+                <button class="btn btn-danger" (click)="delete(customer?.customerID,customer?.name)" type="button">Eliminar</button>
               </div>
             </td>
           </tr>

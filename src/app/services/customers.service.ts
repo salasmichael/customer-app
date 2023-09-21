@@ -20,4 +20,12 @@ export class CustomersService {
     return this.http.post(`${this.baseUrl}/create`, customer);
   }
 
+  updateCustomer(id: number, customer: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/customers/${id}`, customer);
+  }
+
+  deleteCustomer(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`);
+  }
+
 }
