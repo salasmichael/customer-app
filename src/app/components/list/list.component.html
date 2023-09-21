@@ -1,11 +1,11 @@
 
 <div class="list row" >
-    <div class="col-md-10">
+    <div class="col-md-10 mx-auto">
       <div class="input-group mb-3">
         <input
           type="text"
           class="form-control"
-          placeholder="Buscar por serial"
+          placeholder="Buscar.."
           [(ngModel)]="serial"
           (keyup)="search($event)"
         />
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-10 text-center">
+    <div class="col-md-10 mx-auto">
       <h4 class="text-left">Lista de clientes</h4>
 
     <div class="spinner-border m-5" role="status"
@@ -32,22 +32,29 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Imagen</th>
+            <!-- <th scope="col">Imagen</th> -->
             <th scope="col">Tipo Identificación</th>
             <th scope="col">Número Identificación</th>
             <th scope="col">Nombre</th>
             <th scope="col">Género</th>
+            <th scope="col" class="text-center">Opciones</th>
           </tr>
         </thead>
         <tbody>
           <tr 
             *ngFor="let customer of customers; let i = index">
             <th scope="row">{{ i+1 }}</th>
-            <td>{{ customer.imageURL }}</td>
+            <!-- <td>{{ customer.imageURL }}</td> -->
             <td>{{ customer.identificationName }}</td>
             <td>{{ customer.identificationNumber }}</td>
             <td>{{ customer.name }}</td>
             <td>{{ customer.gender }}</td>
+            <td>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="button">Editar</button>
+                <button class="btn btn-danger" type="button">Eliminar</button>
+              </div>
+            </td>
           </tr>
           
         </tbody>

@@ -29,6 +29,7 @@ export class ListComponent {
         error: (e) => console.error(e)
       });
   }
+  
 
   refreshList(): void {
     this.getAllCustomers();

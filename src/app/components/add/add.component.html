@@ -1,1 +1,58 @@
-<p>add works!</p>
+<div class="row">
+    <div class="col-md-4 mx-auto">
+      <form class="form-horizontal form-material" 
+                    id="loginform"
+                    autocomplete="off"
+                    [formGroup]="registerForm" 
+                    (ngSubmit)="create()">
+
+            <div class="form-group">
+                <label for="serial">Tipo de identificación</label>
+                <select class="form-control"
+                        name="identificationTypeID"
+                        formControlName="identificationTypeID">
+                        <option *ngFor="let item of types"
+                        [value]="item.identificationTypeID">{{ item.identificationName }}</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Número de identificación</label>
+                <input type="text" class="form-control"
+                  name="identificationNumber"
+                  formControlName="identificationNumber"
+                />
+                <p class="col text-danger" *ngIf="campoNoValido('identificationNumber')" >* El Número de identificación es obligatorio</p>
+              </div>
+              
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text"class="form-control"
+                name="name"
+                formControlName="name"
+                />
+                <p class="col text-danger" *ngIf="campoNoValido('name')" >* El Nombre es obligatorio</p>
+            </div>
+      
+            <div class="form-group">
+              <label for="description">Género</label>
+              <select class="form-control"
+                        name="gender"
+                        formControlName="gender">
+                        <option value="0">SELECCIONE</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+
+                </select>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-md-4 mx-auto">
+                <button  class="btn btn-success">Guardar cliente</button>
+              </div>
+            </div>
+           
+        </form>
+    </div>
+</div>

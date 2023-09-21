@@ -5,9 +5,9 @@ import { ListComponent } from './components/list/list.component';
 import { DetailComponent } from './components/detail/detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'endowments', pathMatch: 'full' },
-  { path: 'endowments', component: ListComponent },
-  { path: 'endowments/:id', component: DetailComponent },
+  { path: '', redirectTo: 'customers', pathMatch: 'full' },
+  { path: 'customers', component: ListComponent },
+  { path: 'customer/:id', component: DetailComponent },
   { path: 'add', component: AddComponent }
 ];
 
