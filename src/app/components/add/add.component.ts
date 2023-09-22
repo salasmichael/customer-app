@@ -57,7 +57,7 @@ export class AddComponent {
                 showConfirmButton: true,
               }).then((result) => {
                 if (result.isConfirmed) {
-                  this.router.navigateByUrl('/')
+                  this.router.navigateByUrl('/');
                 }
               })
               this.formSubmitted = true;

@@ -15,6 +15,7 @@
                         [value]="item.identificationTypeID">{{ item.identificationName }}</option>
 
                 </select>
+                <p class="col text-danger" *ngIf="campoNoValido('identificationTypeID')" >* El Tipo de identificación es obligatorio</p>
             </div>
 
             <div class="form-group">
@@ -48,8 +49,11 @@
             </div>
 
             <div class="row mt-4">
-              <div class="col-md-4 mx-auto">
+              <div class="col-md-6">
                 <button  class="btn btn-success">Guardar cliente</button>
+              </div>
+              <div class="col-md-6">
+                <a  class="btn btn-light" routerLink="/">Cancelar y volver</a>
               </div>
             </div>
            
