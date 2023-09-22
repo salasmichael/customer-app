@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomersService } from 'src/app/services/customers.service';
 import { IdentificationTypeService } from 'src/app/services/identification-type.service';
@@ -28,7 +28,8 @@ export class EditComponent implements OnInit {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private customersService: CustomersService,
-    private identificationTypeService: IdentificationTypeService
+    private identificationTypeService: IdentificationTypeService,
+    private router:Router, 
   ) {
     this.activatedRoute.params.subscribe(({ id }) => this.getCustomer(id));
   }
@@ -73,6 +74,10 @@ export class EditComponent implements OnInit {
             title: 'Editar cliente',
             text: res.data,
             showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigateByUrl('/')
+            }
           });
           this.formSubmitted = true;
         } else {

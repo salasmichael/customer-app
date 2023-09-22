@@ -5,5 +5,4 @@ export class Customer {
     identificationNumber?:string;
     name?:string;
     gender?:string;
-    imageURL?:string;
 }

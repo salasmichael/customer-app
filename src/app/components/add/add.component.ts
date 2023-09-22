@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomersService } from 'src/app/services/customers.service';
 import { IdentificationTypeService } from 'src/app/services/identification-type.service';
 import Swal from 'sweetalert2';
@@ -23,7 +24,8 @@ export class AddComponent {
   )
   constructor(  private fb: FormBuilder,
                 private identificationTypeService: IdentificationTypeService,
-                private customersService:CustomersService ) { }
+                private customersService:CustomersService,
+                private router:Router ) { }
 
   
   ngOnInit(): void {
@@ -53,6 +55,10 @@ export class AddComponent {
                 title: "Crear cliente",
                 text: res.data,
                 showConfirmButton: true,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  this.router.navigateByUrl('/')
+                }
               })
               this.formSubmitted = true;
             }else{

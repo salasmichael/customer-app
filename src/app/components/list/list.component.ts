@@ -12,8 +12,6 @@ export class ListComponent {
 
   customers?: any[];
   tempEndowments?: any[];
-  serial = '';
-
 
   constructor( private customersService:CustomersService,
               private router:Router) { }
@@ -67,21 +65,21 @@ export class ListComponent {
     })
   }
 
-
-
-
-  refreshList(): void {
-    this.getAllCustomers();
-  }
-
   search(ev:any){
-    ev.target.value == '' && (this.customers = this.tempEndowments)
-  }
+    
+    if(ev.target.value == ''){
+      this.getAllCustomers();
+      return;
+    } 
 
-  searchTitle(): void {
-    let found = this.customers?.filter(f=> f.serial == this.serial);
-    this.customers =  found?.length !=  0 ? found : this.tempEndowments;
+    this.customersService.searchCustomer(ev.target.value)
+      .subscribe({
+        next: (res) => {
+          if(res.status){
+            this.customers = res.data;
+          }
+        }
+      })
   }
-
 
 }

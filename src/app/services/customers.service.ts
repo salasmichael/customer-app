@@ -32,4 +32,9 @@ export class CustomersService {
     return this.http.delete(`${this.baseUrl}/delete/${id}`);
   }
 
+  searchCustomer(query:any): Observable<any>{
+    return this.http.get(`${this.baseUrl}/search/${query}`);
+  }
+  
+
 }
