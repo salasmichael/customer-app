@@ -1,62 +1,44 @@
 <div class="row">
   <div class="col-md-4 mx-auto">
-      <h4 class="text-left mb-4">Registrar cliente</h4>
-      <form class="form-horizontal form-material" 
-                    autocomplete="off"
-                    [formGroup]="registerForm" 
-                    (ngSubmit)="create()">
+    <h4 class="text-left mb-4">Registrar cliente</h4>
+    <form class="form-horizontal form-material" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="create()">
+      <div class="form-group">
+        <label for="identificationTypeID">Tipo de identificación</label>
+        <select class="form-control" name="identificationTypeID" formControlName="identificationTypeID">
+          <option *ngFor="let item of types" [value]="item.identificationTypeID">{{ item.identificationName }}</option>
+        </select>
+        <p class="col text-danger" *ngIf="campoNoValido('identificationTypeID')">* El Tipo de identificación es obligatorio</p>
+      </div>
 
-            <div class="form-group">
-                <label for="serial">Tipo de identificación</label>
-                <select class="form-control"
-                        name="identificationTypeID"
-                        formControlName="identificationTypeID">
-                        <option *ngFor="let item of types"
-                        [value]="item.identificationTypeID">{{ item.identificationName }}</option>
+      <div class="form-group">
+        <label for="identificationNumber">Número de identificación</label>
+        <input type="text" class="form-control" name="identificationNumber" formControlName="identificationNumber" />
+        <p class="col text-danger" *ngIf="campoNoValido('identificationNumber')">* El Número de identificación es obligatorio</p>
+      </div>
 
-                </select>
-                <p class="col text-danger" *ngIf="campoNoValido('identificationTypeID')" >* El Tipo de identificación es obligatorio</p>
-            </div>
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" name="name" formControlName="name" />
+        <p class="col text-danger" *ngIf="campoNoValido('name')">* El Nombre es obligatorio</p>
+      </div>
 
-            <div class="form-group">
-                <label for="name">Número de identificación</label>
-                <input type="text" class="form-control"
-                  name="identificationNumber"
-                  formControlName="identificationNumber"
-                />
-                <p class="col text-danger" *ngIf="campoNoValido('identificationNumber')" >* El Número de identificación es obligatorio</p>
-              </div>
-              
-              <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text"class="form-control"
-                name="name"
-                formControlName="name"
-                />
-                <p class="col text-danger" *ngIf="campoNoValido('name')" >* El Nombre es obligatorio</p>
-            </div>
-      
-            <div class="form-group">
-              <label for="description">Género</label>
-              <select class="form-control"
-                        name="gender"
-                        formControlName="gender">
-                        <option value="0">SELECCIONE</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
+      <div class="form-group">
+        <label for="gender">Género</label>
+        <select class="form-control" name="gender" formControlName="gender">
+          <option value="0">SELECCIONE</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
 
-                </select>
-            </div>
-
-            <div class="row mt-4">
-              <div class="col-md-6">
-                <button  class="btn btn-success">Guardar cliente</button>
-              </div>
-              <div class="col-md-6">
-                <a  class="btn btn-light" routerLink="/">Cancelar y volver</a>
-              </div>
-            </div>
-           
-        </form>
-    </div>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <button class="btn btn-success">Guardar cliente</button>
+        </div>
+        <div class="col-md-6">
+          <a class="btn btn-light" routerLink="/">Cancelar y volver</a>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
