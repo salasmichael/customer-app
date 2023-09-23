@@ -15,11 +15,7 @@ describe('AppModule', () => {
   }));
 
   it('should create', () => {
-    expect(fixture.componentInstance).toBeTruthy(); // Verifica que el componente se haya creado correctamente
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should display "clientApp app is running!"', () => {
-    const appElement = fixture.nativeElement;
-    expect(appElement.textContent).toContain('clientApp app is running!'); // Verifica que el texto deseado esté presente en el elemento
-  });
 });

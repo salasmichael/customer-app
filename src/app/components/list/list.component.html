@@ -1,47 +1,59 @@
-
-<div class="list row" >
-    <div class="col-md-10 mx-auto">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control"
-          placeholder="Buscar por nombre o número de identificación"
-          (keyup)="search($event)"
-        />
-      </div>
-    </div>
-    <div class="col-md-10 mx-auto">
-      <h4 class="text-left mb-4">Lista de clientes</h4>
-
-    <div class="spinner-border m-5" role="status"
-        *ngIf="!customers">
-        <span class="sr-only"></span>
-    </div>
-      <table class="table" *ngIf="customers">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Tipo Identificación</th>
-            <th scope="col">Número Identificación</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Género</th>
-            <th scope="col" class="text-center">Opciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr 
-            *ngFor="let customer of customers; let i = index">
-            <th scope="row">{{ i+1 }}</th>
-            <td>{{ customer?.identificationName }}</td>
-            <td>{{ customer?.identificationNumber }}</td>
-            <td>{{ customer?.name }}</td>
-            <td>{{ customer?.gender }}</td>
-            <td>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button" (click)="getCustomer(customer?.customerID)" >Editar</button>
-                <button class="btn btn-danger" (click)="delete(customer?.customerID,customer?.name)" type="button">Eliminar</button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<div class="list row">
+  <div class="col-md-10 mx-auto">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar por nombre o número de identificación"
+        (keyup)="search($event)"
+      />
     </div>
   </div>
+  <div class="col-md-10 mx-auto">
+    <h4 class="text-left mb-4">Lista de clientes</h4>
+
+    <div class="spinner-border m-5" role="status" *ngIf="!customers">
+      <span class="sr-only"></span>
+    </div>
+
+    <table class="table" *ngIf="customers">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tipo Identificación</th>
+          <th scope="col">Número Identificación</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Género</th>
+          <th scope="col" class="text-center">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ customer?.identificationName }}</td>
+          <td>{{ customer?.identificationNumber }}</td>
+          <td>{{ customer?.name }}</td>
+          <td>{{ customer?.gender }}</td>
+          <td>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                class="btn btn-primary me-md-2"
+                type="button"
+                (click)="getCustomer(customer?.customerID)"
+              >
+                Editar
+              </button>
+              <button
+                class="btn btn-danger"
+                (click)="delete(customer?.customerID, customer?.name)"
+                type="button"
+              >
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
